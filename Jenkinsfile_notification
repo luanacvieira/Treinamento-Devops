@@ -30,7 +30,7 @@ pipeline {
         }     
         failure {
             emailext body: 'Check console output at ${env.BUILD_NUMBER}] to view the results. \n\n \n\n -------------------------------------------------- \n', 
-                    to: ""luanac.vieira@gmail.com", 
+                    to: "luanac.vieira@gmail.com", 
                     subject: 'Build failed in Jenkins:TESTE'
         }
     }
