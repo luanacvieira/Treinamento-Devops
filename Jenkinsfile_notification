@@ -15,8 +15,9 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo 'Deploying....'
-                echo ${env.JOB_NAME}
-                echo ${env.BUILD_NUMBER}
+                echo $PROJECT_NAME
+                echo $BUILD_NUMBER
+                echo ${CHANGES}
             }
         }
     }
