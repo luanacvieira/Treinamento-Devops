@@ -15,7 +15,6 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo 'Deploying....'
-                echo def deployEnv = params.deployEnvironment.toLowerCase()$PROJECT_NAME
                 echo $BUILD_NUMBER
                 echo $JOB_NAME
                 echo $BUILD_URL
