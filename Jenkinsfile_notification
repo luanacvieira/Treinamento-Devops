@@ -1,0 +1,41 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Build') {
+            steps {
+                echo 'Building..'
+            }
+        }
+        stage('Test') {
+            steps {
+                echo 'Testing..'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo 'Deploying....'
+                echo $BUILD_NUMBER
+                echo $JOB_NAME
+                echo $BUILD_URL
+                print "teste"
+                echo "teste"
+           
+            }
+        }
+    }
+    post {
+        success {
+            emailext(
+                subject: "${JOB_NAME} na build [${BUILD_NUMBER}] foi deployado com sucesso :D",
+                body: "Verifique a saída da console do Job ${JOB_NAME} em [${BUILD_URL}] ",
+                to: "luanac.vieira@gmail.com"
+            )
+        }     
+        failure {
+            emailext body: 'ERRO PIPE', 
+                    to: "luanac.vieira@gmail.com", 
+                    subject: 'Build failed in Jenkins:TESTE'
+        }
+    }
+} 
